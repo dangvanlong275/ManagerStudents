@@ -53,11 +53,11 @@
                     {{ class.name }}
                 </td>
                 <td>
-                    {{ class.name_teacher }}
+                    {{ class.teacher_name }}
                 </td>
                 <td>
                     <button class="btn btn-danger" type="button" onclick="delete_class('{{class.id}}')">Delete</button>
-                    <button class="btn btn-info" type="button" onclick='window.open( "detail_class?id={{class.id}}", "_self")'>
+                    <button class="btn btn-info" type="button" onclick='window.open( "detail-class?class_id={{class.id}}", "_self")'>
                         Detail Class
                     </button>
                 </td>

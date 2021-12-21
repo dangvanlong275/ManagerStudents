@@ -72,7 +72,7 @@ def register():
         user = Student(form.name.data, form.age.data, form.address.data, form.email.data)
         user.set_password("123456")
         user.insert_data()
-        flash('Tạo thành công tài khoản')
+        flash('Đăng ký thành công sinh viên')
         return redirect('/index')
     return render_template('register.html', title='Register Studentss', form=form)
 
@@ -81,43 +81,8 @@ def logout():
     logout_user()
     return redirect('/login')
 
-@app.route('/list-class')
-@login_required
-def class_manager():
-    list_class = Class.query.all()
-    user = Student.query.get(current_user.id)
-    return render_template('class_view.html',title="List class",user=user,list_class=list_class)
 
-@app.route('/join-class', methods=['GET', 'POST'])
-@login_required
-def join_class():
-    if request.method == 'POST':
-        DetailStudent.query.filter_by(student_id=current_user.id).delete()
-        regis_class = request.form.getlist('regis_class')
-        for _class in regis_class:
-            join_class = DetailStudent(current_user.id,_class)
-            join_class.insert_data()
-    user = Student.query.get(current_user.id)
-    list_class_student = Class.query.join(DetailStudent, Class.id==DetailStudent.class_id)\
-                .filter(DetailStudent.student_id == current_user.id)
-    class_id = list_class_student.with_entities(DetailStudent.class_id)
-    list_class = Class.query.join(DetailStudent, Class.id==DetailStudent.class_id, isouter = True)\
-                .filter(Class.id.notin_(class_id))
-    return render_template('class.html',title="Join Class",user=user, list_class=list_class,list_class_student=list_class_student)
 
-@app.route('/profile', methods =['GET', 'POST'])
-@login_required
-def profile():
-    user = Student.query.get(current_user.id)
-    return render_template('profile.html', title='Home', user=user)
 
-@app.route('/create-class', methods=['GET','POST'])
-@login_required
-def create_class():
-    form = CreatedClass()
-    if request.method == 'POST':
-        class_ = Class(form.name.data, form.teacher_name.data)
-        class_.insert_data()
-        flash('Tạo lớp học thành công!')
-        return redirect('/class')
-    return render_template('manager_class.html', title='Manager Class', form=form)
+
+
