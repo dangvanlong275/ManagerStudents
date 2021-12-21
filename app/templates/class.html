@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %} {% block content %}
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-6 col-sm-8 clearfix">
+            <ul class="user-info pull-left pull-none-xsm">
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong> Mã sinh viên:</strong>{{ user.id }}
+                    </a>
+                </li>
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong>&emsp; Họ và tên: </strong>{{ user.name }}
+                    </a>
+                </li>
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong>&emsp; Tuổi:</strong>{{ user.age }}
+                    </a>
+                </li>
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong>&emsp; Địa chỉ:</strong>{{ user.address }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <ol class="breadcrumb bc-3">
+        <li> <a href="#"><i class="fa-home"></i>Home</a> </li>
+        <li> <a href="#">Manage Student</a> </li>
+        <li> <a href="./students">List Student</a> </li>
+        <li class="active"> <strong>Join Class</strong> </li>
+    </ol>
+    <h3>LIST CLASS</h3><br />
+    <form action="" method="post">
+        <table class="table table-bordered datatable" id="table-3">
+            <tr>
+                <td>
+                    <h4>Lớp học đã đăng ký</h4>
+                    <hr> {% for _class in list_class_student %}
+                    <input type="checkbox" checked name="regis_class" value="{{ _class.id }}" id="{{ _class.id }}">
+                    <label for="{{ _class.id }}">{{ _class.name }} - {{ _class.name_teacher }}</label> <br> {% endfor %} </td>
+                <td>
+                    <h4>Lớp học chưa đăng ký</h4>
+                    <hr> {% for class in list_class %}
+                    <input type="checkbox" name="regis_class" value="{{ class.id }}" id="{{ class.id }}">
+                    <label for="{{ class.id }}">{{ class.name }} - {{ class.name_teacher }}</label> <br> {% endfor %} </td>
+            </tr>
+        </table>
+        <div class="submit" style="margin-top: 50px;">
+            <input class="btn btn-info" type="submit" value="Save">
+        </div>
+    </form>
+    {% endblock %}

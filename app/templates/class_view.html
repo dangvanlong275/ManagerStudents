@@ -1,0 +1,86 @@
+{% extends "layouts/base.html" %} {% block content %}
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-6 col-sm-8 clearfix">
+            <ul class="user-info pull-left pull-none-xsm">
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong> Mã sinh viên:</strong>{{ user.id }}
+                    </a>
+                </li>
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong>&emsp; Họ và tên: </strong>{{ user.name }}
+                    </a>
+                </li>
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong>&emsp; Tuổi:</strong>{{ user.age }}
+                    </a>
+                </li>
+                <li class="profile-info dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <strong>&emsp; Địa chỉ:</strong>{{ user.address }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <ol class="breadcrumb bc-3">
+        <li>
+            <a href="#"><i class="fa-home"></i>Home</a>
+        </li>
+        <li><a href="#">Manage Class</a></li>
+        <li class="active"><strong>List Class</strong></li>
+    </ol>
+    <h2>List Class</h2>
+    <br />
+    <table class="table table-bordered datatable" id="table-1">
+        <thead>
+            <th>Mã lớp</th>
+            <th>Tên lớp</th>
+            <th>Giáo viên dạy</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for class in list_class %}
+            <tr>
+                <th scope="row">
+                    {{ class.id }}
+                </th>
+                <td>
+                    {{ class.name }}
+                </td>
+                <td>
+                    {{ class.name_teacher }}
+                </td>
+                <td>
+                    <button class="btn btn-danger" type="button" onclick="delete_class('{{class.id}}')">Delete</button>
+                    <button class="btn btn-info" type="button" onclick='window.open( "detail_class?id={{class.id}}", "_self")'>
+                        Detail Class
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('#table-1').DataTable();
+        });
+
+        function delete_class(id) {
+            option = confirm('Bạn có muốn xoá lớp học này không ?')
+            if (!option) {
+                return;
+            }
+            console.log(id);
+            $.post('/delete-class', {
+                'id': id
+            }, function(data) {
+                location.reload()
+            })
+        }
+    </script>
+    {% endblock %}
