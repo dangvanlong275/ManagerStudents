@@ -1,17 +1,32 @@
-{% extends "base.html"%} {% block content %}
+{% extends "layouts/base.html" %} {% block content %}
+<style>
+    .frm-login {
+        width: 50%;
+        padding: 20px;
+        border: 1px #1014cb solid;
+        border-radius: 3%;
+        text-align: center;
+        margin: 0 auto;
+        height: 320px;
+        box-shadow: 0px 4px 8px 10px #86b9e7;
+        margin-top: 16%;
+    }
+</style>
+<div class="main-content">
+    <div class="col-md-6 col-sm-8 clearfix" style="height: 882px;width: 100%;;display: flex;">
 
-<h1>Create Class</h1>
-<form action="" method="post">
+        <form class="frm-login" action="" method="post" style="">
+            <h1>Create Class</h1>
+            <div class="form-group" style="width: 100%; margin-top: 30px;">
+                {{ form.name.label }}<br> {{ form.name(size=100) }} {% for error in form.name.errors %}
+                <br><span style="color: red;">{{ error }}</span> {% endfor %}
+            </div>
 
-    <p>
-        {{ form.name.label }}<br> {{ form.name(size=100) }} {% for error in form.name.errors %}
-        <br><span style="color: red;">{{ error }}</span> {% endfor %}
-    </p>
+            <div class="form-group " style="width: 100%; margin-top: 30px; ">
+                {{ form.teacher_name.label }}<br> {{ form.teacher_name(size=100) }}
+            </div>
 
-    <p>
-        {{ form.teacher_name.label }}<br> {{ form.teacher_name(size=100) }}
-    </p>
-
-    <p>{{ form.submit() }}</p>
-</form>
-{% endblock %}
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+    {% endblock %}

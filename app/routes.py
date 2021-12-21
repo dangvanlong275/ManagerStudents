@@ -67,8 +67,7 @@ def admin_login():
 @login_required
 def register():
     form = RegisterForm()
-    if current_user.is_authenticated:
-        return redirect('/index')
+    
     if form.validate_on_submit():
         user = Student(form.name.data, form.age.data, form.address.data, form.email.data)
         user.set_password("123456")
@@ -110,7 +109,7 @@ def join_class():
 @login_required
 def profile():
     user = Student.query.get(current_user.id)
-    return render_template('index.html', title='Home', user=user)
+    return render_template('profile.html', title='Home', user=user)
 
 @app.route('/create-class', methods=['GET','POST'])
 @login_required

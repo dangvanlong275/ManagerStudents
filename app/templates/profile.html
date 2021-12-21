@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %} {% block content %}
+<style>
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    
+    .exampleInputEmail1 {
+        text-align: center;
+    }
+    
+    .form-control {
+        text-align: center;
+        height: 60px;
+    }
+</style>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-6 col-sm-8 clearfix" style="height: 882px;width: 100%;;display: flex;">
+
+            <form style="width:30%;padding: 20px; border: 1px #000 solid;border-radius: 3%;text-align: center; margin: 0 auto;height: 510px;box-shadow: 0px 4px 8px 10px #888888;">
+                <span style="font-size: 24px; font-weight: 600;">Thông tin cá nhân</span>
+
+
+                <div class="form-group" style="width: 100%;">
+                    <label for="exampleInputEmail1" class="exampleInputEmail1">Mã sinh viên</label>
+                    <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="{{ user.id }} " readonly>
+                </div>
+                <div class="form-group " style="width: 100%; ">
+                    <label for="exampleInputPassword1 " class="exampleInputEmail1">Họ và tên</label>
+                    <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="{{ user.name }} " readonly>
+                </div>
+                <div class="form-group " style="width: 100%; ">
+                    <label for="exampleInputPassword1 " class="exampleInputEmail1">Tuổi</label>
+                    <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="{{ user.age }} " readonly>
+                </div>
+                <div class="form-group " style="width: 100%; ">
+                    <label for="exampleInputPassword1 " class="exampleInputEmail1">Địa chỉ</label>
+                    <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="{{ user.address }} " readonly>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    {% endblock %}

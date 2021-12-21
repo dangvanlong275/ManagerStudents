@@ -1,5 +1,5 @@
 {% block content %}
-<h1>Register</h1>
+<!-- <h1>Register</h1>
 <form action="" method="post">
     {{ form.hidden_tag() }}
     <p>
@@ -19,5 +19,72 @@
         <span style="color: red;">[{{ error }}]</span> {% endfor %}
     </p>
     <p>{{ form.submit() }}</p>
-</form>
+</form> -->
+<style>
+    .frm-register {
+        width: 20%;
+        padding: 20px;
+        border: 1px #000 solid;
+        border-radius: 3%;
+        text-align: center;
+        margin: 0 auto;
+        height: 260px;
+        box-shadow: 0px 4px 8px 10px #888888;
+        margin-top: 12%;
+    }
+    
+    #name {
+        height: 24px;
+        border-radius: 4px;
+    }
+    
+    #age {
+        height: 24px;
+        border-radius: 4px;
+    }
+    
+    #address {
+        height: 24px;
+        border-radius: 4px;
+    }
+    
+    #email {
+        height: 24px;
+        border-radius: 4px;
+    }
+    
+    #submit {
+        height: 24px;
+        border-radius: 4px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6 col-sm-8 clearfix" style="height: 882px;width: 100%;;display: flex;    background-color: aliceblue;">
+
+        <form action="" method="post" class="frm-register" style="">
+            {{ form.hidden_tag() }}
+            <span style="font-size: 24px; font-weight: 600;">Thông tin cá nhân</span>
+
+
+            <div class="form-group" style="width: 100%;">
+                {{ form.name.label }}<br> {{ form.name(size=32) }}<br> {% for error in form.name.errors %}
+                <span style="color: red;">[{{ error }}]</span> {% endfor %}
+            </div>
+            <div class="form-group " style="width: 100%; ">
+                {{ form.age.label }}<br> {{ form.age(size=32) }}<br> {% for error in form.age.errors %}
+                <span style="color: red;">[{{ error }}]</span> {% endfor %}
+            </div>
+            <div class="form-group " style="width: 100%; ">
+                {{ form.address.label }}<br> {{ form.address(size=32) }}<br> {% for error in form.address.errors %}
+                <span style="color: red;">[{{ error }}]</span> {% endfor %}
+            </div>
+            <div class="form-group " style="width: 100%; ">
+                {{ form.email.label }}<br> {{ form.email(size=32) }}<br> {% for error in form.email.errors %}
+                <span style="color: red;">[{{ error }}]</span> {% endfor %}
+            </div>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+
+</div>
 {% endblock %}
