@@ -1,0 +1,36 @@
+<!-- <table>
+    <tr>
+        <th>Mã sv</th>
+        <th>Họ tên</th>
+        <th>Tuổi</th>
+        <th>Địa chỉ</th>
+        <th>Email</th>
+        <th>Trạng thái</th>
+    </tr>
+    {% for dt in detail_class %}
+    <tr>
+        <td>{{ dt.id }}</td>
+        <td>{{ dt.name }}</td>
+        <td>{{ dt.age }}</td>
+        <td>{{ dt.address }}</td>
+        <td>{{ dt.email }}</td>
+        <td>
+            <select name="active" id="active">
+            {% if dt.active == 1 %}
+                <option value="1" selected>Mở</option>
+                <option value="0">Khóa</option>
+            {% else %}
+                <option value="1">Mở</option>
+                <option value="0" selected>Khóa</option>
+            {% endif %}
+            </select>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<script src="static/js/jquery-1.11.3.min.js"></script>
+<script>
+    $('#active').change(function() {
+        alert(this.value)
+    })
+</script> -->

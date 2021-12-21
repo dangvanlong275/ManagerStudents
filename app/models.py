@@ -30,7 +30,18 @@ class Student(UserMixin,db.Model):
         self.password = generate_password_hash(password)
     def check_password(self, password):
         return check_password_hash(self.password, password)
-    
+    def update_student(self, name, age, address, email):
+        self.name = name
+        self.age = age
+        self.address = address
+        self.email = email
+        db.session.commit()
+    def update_active(self, active):
+        self.active = bool(active)
+        db.session.commit()
+    def delete_student(self):
+        db.session.delete(self)
+        db.session.commit()
 
 @login.user_loader
 def loader_id(id):
@@ -47,6 +58,13 @@ class Class(db.Model):
     def insert_data(self):
         db.session.add(self)
         db.session.commit()
+    def update_data(self, name, teacher_name):
+        self.name = name
+        self.teacher_name = teacher_name
+        db.session.commit()
+    def delete_class(self):
+        db.session.delete(self)
+        db.session.commit()
     def list_class():
         return Class.query.all()
     
@@ -60,6 +78,9 @@ class DetailStudent(db.Model):
         self.class_id = class_id
     def insert_data(self):
         db.session.add(self)
+        db.session.commit()
+    def delete_detail(self):
+        db.session.delete(self)
         db.session.commit()
 class Admin(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key=True)
