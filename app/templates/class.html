@@ -41,12 +41,12 @@
                     <h4>Lớp học đã đăng ký</h4>
                     <hr> {% for _class in list_class_student %}
                     <input type="checkbox" checked name="regis_class" value="{{ _class.id }}" id="{{ _class.id }}">
-                    <label for="{{ _class.id }}">{{ _class.name }} - {{ _class.name_teacher }}</label> <br> {% endfor %} </td>
+                    <label for="{{ _class.id }}">{{ _class.name }} - {{ _class.teacher_name }}</label> <br> {% endfor %} </td>
                 <td>
                     <h4>Lớp học chưa đăng ký</h4>
                     <hr> {% for class in list_class %}
                     <input type="checkbox" name="regis_class" value="{{ class.id }}" id="{{ class.id }}">
-                    <label for="{{ class.id }}">{{ class.name }} - {{ class.name_teacher }}</label> <br> {% endfor %} </td>
+                    <label for="{{ class.id }}">{{ class.name }} - {{ class.teacher_name }}</label> <br> {% endfor %} </td>
             </tr>
         </table>
         <div class="submit" style="margin-top: 50px;">

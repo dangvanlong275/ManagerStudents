@@ -1,0 +1,17 @@
+{% extends "base.html"%} {% block content %}
+
+<h1>Create Class</h1>
+<form action="" method="post">
+
+    <p>
+        {{ form.name.label }}<br> {{ form.name(size=100) }} {% for error in form.name.errors %}
+        <br><span style="color: red;">{{ error }}</span> {% endfor %}
+    </p>
+
+    <p>
+        {{ form.teacher_name.label }}<br> {{ form.teacher_name(size=100) }}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

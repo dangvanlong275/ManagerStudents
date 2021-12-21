@@ -14,7 +14,7 @@ class Student(UserMixin,db.Model):
     address = db.Column(db.String(64), nullable = True)
     email = db.Column(db.String(120), index=True, unique=True, nullable = False)
     password = db.Column(db.String(128), nullable = False)
-    active = db.Column(db.Boolean,  default=False)
+    active = db.Column(db.Boolean,  default=True)
  
     def __repr__(self):
         return '<User {}>'.format(self.name)   
@@ -23,7 +23,6 @@ class Student(UserMixin,db.Model):
         self.age = age
         self.address = address
         self.email = email
-        self.active = 1
     def insert_data(self):
         db.session.add(self)
         db.session.commit()
@@ -39,12 +38,12 @@ def loader_id(id):
 
 class Class(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable = False)
-    name_teacher = db.Column(db.String(64), nullable = False)
+    name = db.Column(db.String(100), nullable = False)
+    teacher_name = db.Column(db.String(100), nullable = False)
 
-    def __init__(self,name,name_teacher):
+    def __init__(self,name,teacher_name):
         self.name = name
-        self.age = name_teacher
+        self.teacher_name = teacher_name
     def insert_data(self):
         db.session.add(self)
         db.session.commit()
@@ -55,10 +54,6 @@ class DetailStudent(db.Model):
     student_id = db.Column(db.Integer,primary_key=True)
     class_id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.TIMESTAMP,default=datetime.utcnow, nullable = False)
-    __table_args__ = (
-        db.ForeignKeyConstraint(['student_id'], ['student.id'], name='fk_student_detail_student'),
-        db.ForeignKeyConstraint(['class_id'], ['class.id'], name='fk_class_detail_student')
-    )
 
     def __init__(self,student_id,class_id):
         self.student_id = student_id
