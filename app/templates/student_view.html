@@ -1,0 +1,74 @@
+{% extends "layouts/base.html" %} {% block content %}
+<div class="main-content">
+    <h2>List Class</h2>
+    <br />
+    <form action="register-student" method="get">
+        <button class="btn btn-danger" type="submit">Register</button>
+    </form>
+    <table class="table table-bordered datatable" id="table-1">
+        <thead>
+            <th>Mã sv</th>
+            <th>Tên sinh viên</th>
+            <th>Tuổi</th>
+            <th>Địa chỉ</th>
+            <th>Email</th>
+            <th>Trạng thái</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for st in list_students %}
+            <tr>
+                <th scope="row">
+                    {{ st.id }}
+                </th>
+                <td>
+                    {{ st.name }}
+                </td>
+                <td>
+                    {{ st.age }}
+                </td>
+                <td>
+                    {{ st.address }}
+                </td>
+                <td>
+                    {{ st.email }}
+                </td>
+                <td>
+                    <select name="active" id="active">
+                    {% if st.active == 1 %}
+                        <option value="1" selected>Mở</option>
+                        <option value="0">Khóa</option>
+                    {% else %}
+                        <option value="1">Mở</option>
+                        <option value="0" selected>Khóa</option>
+                    {% endif %}
+                </td>
+                <td>
+                    <form action="delete-student" method="post">
+                        <input type="hidden" name="student_id" value=" {{ st.id }}">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('#table-1').DataTable();
+        });
+
+        function delete_class(id) {
+            option = confirm('Bạn có muốn xoá lớp học này không ?')
+            if (!option) {
+                return;
+            }
+            console.log(id);
+            $.post('/delete-class', {
+                'id': id
+            }, function(data) {
+                location.reload()
+            })
+        }
+    </script>
+    {% endblock %}

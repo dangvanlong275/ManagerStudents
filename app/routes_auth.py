@@ -12,28 +12,12 @@ from werkzeug.urls import url_parse
 from app.models import DetailStudent, Student,Admin,Class
 
 @app.route('/')
-@app.route('/index')
-@login_required
-def index():
-    user = {'username': 'Long'}
-    
-    posts = [
-        {
-            'author': {'username': 'Nguyen'},
-            'body': 'Flask de hoc qua phai khong?'
-        },
-        {
-            'author': {'username': 'Long'},
-            'body': 'Lap trinh Web that thu vi!'
-        }
-    ]
-    return render_template('index.html', title='Home', user=user,posts = posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if current_user.is_authenticated:
-        return redirect('/index')
+        return redirect('/profile')
     if form.validate_on_submit():
         user = Student.query.filter_by(email=form.email.data).first()
         if user is None or not user.check_password(form.password.data):
@@ -42,7 +26,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = ('/index')
+            next_page = ('/profile')
         return redirect(next_page)
     return render_template('login.html',title="Sign In Student", admin = False,form = form)
 
@@ -50,7 +34,7 @@ def login():
 def admin_login():
     form = LoginFormAdmin()
     if current_user.is_authenticated:
-        return redirect('/index')
+        return redirect('/list-student')
     if form.validate_on_submit():
         user = Admin.query.filter_by(user_name=form.user_name.data).first()
         if user is None or not user.check_password(form.password.data):
@@ -59,7 +43,7 @@ def admin_login():
         login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = ('/index')
+            next_page = ('/list-student')
         return redirect(next_page)
     return render_template('login.html',title="Admin Login",admin = True,form = form)
 
@@ -73,7 +57,7 @@ def register():
         user.set_password("123456")
         user.insert_data()
         flash('Đăng ký thành công sinh viên')
-        return redirect('/index')
+        return redirect('/list-student')
     return render_template('register.html', title='Register Studentss', form=form)
 
 @app.route('/logout')

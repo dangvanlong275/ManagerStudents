@@ -1,25 +1,5 @@
 {% block content %}
-<!-- <h1>Register</h1>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.name.label }}<br> {{ form.name(size=32) }}<br> {% for error in form.name.errors %}
-        <span style="color: red;">[{{ error }}]</span> {% endfor %}
-    </p>
-    <p>
-        {{ form.age.label }}<br> {{ form.age(size=32) }}<br> {% for error in form.age.errors %}
-        <span style="color: red;">[{{ error }}]</span> {% endfor %}
-    </p>
-    <p>
-        {{ form.address.label }}<br> {{ form.address(size=32) }}<br> {% for error in form.address.errors %}
-        <span style="color: red;">[{{ error }}]</span> {% endfor %}
-    </p>
-    <p>
-        {{ form.email.label }}<br> {{ form.email(size=32) }}<br> {% for error in form.email.errors %}
-        <span style="color: red;">[{{ error }}]</span> {% endfor %}
-    </p>
-    <p>{{ form.submit() }}</p>
-</form> -->
+
 <style>
     .frm-register {
         width: 20%;
@@ -61,9 +41,9 @@
 <div class="row">
     <div class="col-md-6 col-sm-8 clearfix" style="height: 882px;width: 100%;;display: flex;    background-color: aliceblue;">
 
-        <form action="" method="post" class="frm-register" style="">
-            {{ form.hidden_tag() }}
-            <span style="font-size: 24px; font-weight: 600;">Thông tin cá nhân</span>
+        <form action="" method="post" class="frm-register">
+            <span style="font-size: 24px; font-weight: 600;">Thêm sinh viên</span> {{ form.hidden_tag() }}
+
 
 
             <div class="form-group" style="width: 100%;">

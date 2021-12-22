@@ -1,0 +1,67 @@
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Neon Admin Panel" />
+    <meta name="author" content="Laborator.co" />
+    <title>Chi tiết lớp học</title>
+    <link rel="stylesheet" href="static/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css" id="style-resource-1" />
+    <link rel="stylesheet" href="static/css/font-icons/entypo/css/entypo.css" id="style-resource-2" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" id="style-resource-3" />
+    <link rel="stylesheet" href="static/css/bootstrap.css" id="style-resource-4" />
+    <link rel="stylesheet" href="static/css/neon-core.css" id="style-resource-5" />
+    <link rel="stylesheet" href="static/css/neon-theme.css" id="style-resource-6" />
+    <link rel="stylesheet" href="static/css/neon-forms.css" id="style-resource-7" />
+    <link rel="stylesheet" href="static/css/custom.css" id="style-resource-8" />
+    <script src="static/js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="static/fontawesome/css/all.css">
+</head>
+<style>
+    .form-group {
+        margin: 0 auto;
+        width: 70%;
+    }
+</style>
+
+<body>
+    <div class="main-content" style="display: flex;">
+        <form action="/update-student" method="post" style="width: 30%; text-align: center;margin: 20px auto;background-color: aliceblue;">
+            <span>Sửa lớp học</span>
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="exampleInputEmail1 pull-left">ID</label>
+                <input type="number" class="form-control" name="student_id" id="exampleInputEmail1 " aria-describedby="emailHelp " value="{{ student_.id }}" readonly>
+            </div>
+            <div class="form-group ">
+                <label for="exampleInputPassword1 " class="exampleInputEmail1 pull-left">Tên</label>
+                <input type="text" class="form-control " name="name" id="exampleInputPassword1 " value="{{ student_.name }}">
+            </div>
+            <div class="form-group ">
+                <label for="exampleInputPassword1 " class="exampleInputEmail1 pull-left">Tuổi</label>
+                <input type="text" class="form-control " name="age" id="exampleInputPassword1 " value="{{ student_.age }}">
+            </div>
+            <div class="form-group ">
+                <label for="exampleInputPassword1 " class="exampleInputEmail1 pull-left">Địa chỉ</label>
+                <input type="text" class="form-control " name="address" id="exampleInputPassword1 " value="{{ student_.address }}">
+            </div>
+            <div class="form-group ">
+                <label for="exampleInputPassword1 " class="exampleInputEmail1 pull-left">Email</label>
+                <input type="text" class="form-control " name="email" id="exampleInputPassword1 " value="{{ student_.email }}">
+            </div>
+            <div class="form-group " style="width: 100%; ">
+                <button type="submit">Save</button>
+            </div>
+        </form>
+
+
+
+    </div>
+</body>
+<script src="static/js/jquery-1.11.3.min.js"></script>
+<script>
+    $('#active').change(function() {
+        alert(this.value)
+    })
+</script>

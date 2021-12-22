@@ -1,36 +1,67 @@
-<!-- <table>
-    <tr>
-        <th>Mã sv</th>
-        <th>Họ tên</th>
-        <th>Tuổi</th>
-        <th>Địa chỉ</th>
-        <th>Email</th>
-        <th>Trạng thái</th>
-    </tr>
-    {% for dt in detail_class %}
-    <tr>
-        <td>{{ dt.id }}</td>
-        <td>{{ dt.name }}</td>
-        <td>{{ dt.age }}</td>
-        <td>{{ dt.address }}</td>
-        <td>{{ dt.email }}</td>
-        <td>
-            <select name="active" id="active">
-            {% if dt.active == 1 %}
-                <option value="1" selected>Mở</option>
-                <option value="0">Khóa</option>
-            {% else %}
-                <option value="1">Mở</option>
-                <option value="0" selected>Khóa</option>
-            {% endif %}
-            </select>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Neon Admin Panel" />
+    <meta name="author" content="Laborator.co" />
+    <title>Chi tiết lớp học</title>
+    <link rel="stylesheet" href="static/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css" id="style-resource-1" />
+    <link rel="stylesheet" href="static/css/font-icons/entypo/css/entypo.css" id="style-resource-2" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" id="style-resource-3" />
+    <link rel="stylesheet" href="static/css/bootstrap.css" id="style-resource-4" />
+    <link rel="stylesheet" href="static/css/neon-core.css" id="style-resource-5" />
+    <link rel="stylesheet" href="static/css/neon-theme.css" id="style-resource-6" />
+    <link rel="stylesheet" href="static/css/neon-forms.css" id="style-resource-7" />
+    <link rel="stylesheet" href="static/css/custom.css" id="style-resource-8" />
+    <script src="static/js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="static/fontawesome/css/all.css">
+</head>
+
+<body>
+
+    <div class="main-content" style="display: flex; margin-top: 30px;">
+
+        <table class="table table-bordered datatable" style="width: 50%; margin: 0 auto;">
+            <tr>
+                <th colspan="6" style="text-align: center;">Chi Tiết Lớp Học</th>
+            </tr>
+            <tr style="height: 48px; background-color: aqua;">
+                <th>Mã sv</th>
+                <th>Họ tên</th>
+                <th>Tuổi</th>
+                <th>Địa chỉ</th>
+                <th>Email</th>
+                <th>Trạng thái</th>
+            </tr>
+            {% for dt in detail_class %}
+            <tr style="height: 48px;">
+                <td>{{ dt.id }}</td>
+                <td>{{ dt.name }}</td>
+                <td>{{ dt.age }}</td>
+                <td>{{ dt.address }}</td>
+                <td>{{ dt.email }}</td>
+                <td>
+                    <select name="active" id="active">
+                {% if dt.active == 1 %}
+                    <option value="1" selected>Mở</option>
+                    <option value="0">Khóa</option>
+                {% else %}
+                    <option value="1">Mở</option>
+                    <option value="0" selected>Khóa</option>
+                {% endif %}
+                </select>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
 <script src="static/js/jquery-1.11.3.min.js"></script>
 <script>
     $('#active').change(function() {
         alert(this.value)
     })
-</script> -->
+</script>

@@ -44,7 +44,7 @@ def detail_class():
 def search_class():
     class_id = request.args.get("class_id")
     class_ = Class.query.get(class_id)
-    return render_template('detail_class.html',detail_class=class_)
+    return render_template('class_update.html',class_=class_)
 
 @app.route('/update-class', methods=['POST'])
 @login_required
@@ -52,10 +52,9 @@ def update_class():
     class_id = request.form.get("class_id")
     name = request.form.get("name")
     teacher_name = request.form.get("teacher_name")
-
     class_ = Class.query.get(class_id)
     class_.update_data(name, teacher_name)
-    return render_template('detail_class.html',detail_class=class_id)
+    return redirect('/list-class')
 
 @app.route('/delete-class', methods=['POST'])
 @login_required
