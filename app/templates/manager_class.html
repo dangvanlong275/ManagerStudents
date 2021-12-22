@@ -11,11 +11,15 @@
         box-shadow: 0px 4px 8px 10px #86b9e7;
         margin-top: 16%;
     }
+    
+    input {
+        max-width: 100%;
+    }
 </style>
 <div class="main-content">
     <div class="col-md-6 col-sm-8 clearfix" style="height: 882px;width: 100%;;display: flex;">
 
-        <form class="frm-login" action="" method="post" style="">
+        <form class="frm-login" action="" method="post">
             <h1>Create Class</h1>
             <div class="form-group" style="width: 100%; margin-top: 30px;">
                 {{ form.name.label }}<br> {{ form.name(size=100) }} {% for error in form.name.errors %}

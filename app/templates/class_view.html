@@ -71,15 +71,15 @@
             $('#table-1').DataTable();
         });
 
-        function delete_class(id) {
+        function delete_class(class_id) {
             option = confirm('Bạn có muốn xoá lớp học này không ?')
             if (!option) {
                 return;
             }
-            console.log(id);
             $.post('/delete-class', {
-                'id': id
+                'class_id': class_id
             }, function(data) {
+                alert('Xóa thành công lớp học')
                 location.reload()
             })
         }
