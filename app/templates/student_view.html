@@ -1,10 +1,10 @@
 {% extends "layouts/base.html" %} {% block content %}
 <div class="main-content">
-    <h2>List Class</h2>
+    <h2>List Student</h2>
     <br />
-    <form action="register-student" method="get">
-        <button class="btn btn-danger" type="submit">Register</button>
-    </form>
+
+    <a class="btn btn-danger" style="margin-bottom: 10px;" href="/register-student">Register</a>
+
     <table class="table table-bordered datatable" id="table-1">
         <thead>
             <th>Mã sv</th>
@@ -34,7 +34,7 @@
                     {{ st.email }}
                 </td>
                 <td>
-                    <select name="active" id="active">
+                    <select name="active" onchange="doitrangthai('{{ st.id }}','{{ st.active }}')">
                     {% if st.active == 1 %}
                         <option value="1" selected>Mở</option>
                         <option value="0">Khóa</option>
@@ -42,12 +42,12 @@
                         <option value="1">Mở</option>
                         <option value="0" selected>Khóa</option>
                     {% endif %}
+                    </select>
                 </td>
                 <td>
-                    <form action="delete-student" method="post">
-                        <input type="hidden" name="student_id" value=" {{ st.id }}">
-                        <button class="btn btn-danger" type="submit">Delete</button>
-                    </form>
+
+                    <a class="btn btn-danger" type="submit" onclick="delete_class('{{ st.id }}')">Delete</a>
+
                 </td>
             </tr>
             {% endfor %}
@@ -59,14 +59,29 @@
         });
 
         function delete_class(id) {
-            option = confirm('Bạn có muốn xoá lớp học này không ?')
+            option = confirm('Bạn có muốn xoá sinh viên này không ?')
             if (!option) {
                 return;
             }
-            console.log(id);
-            $.post('/delete-class', {
-                'id': id
+            $.post('/delete-student', {
+                'student_id': id
             }, function(data) {
+                alert('Xóa thành công')
+                location.reload()
+            })
+        }
+
+        function doitrangthai(student_id, acti) {
+            option = confirm('Bạn có chắc chắn muốn đổi trạng thái sinh viên này')
+            if (!option) {
+                return;
+            }
+            active = acti == 1 ? 0 : 1
+            $.post('/update-activate-student', {
+                'student_id': student_id,
+                'active': active
+            }, function(data) {
+                alert('Cập nhật trạng thái thành công')
                 location.reload()
             })
         }
