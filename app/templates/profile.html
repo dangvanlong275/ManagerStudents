@@ -19,27 +19,32 @@
     <div class="row">
         <div class="col-md-6 col-sm-8 clearfix" style="height: 882px;width: 100%;;display: flex;">
 
-            <form style="width:30%;padding: 20px; border: 1px #000 solid;border-radius: 3%;text-align: center; margin: 0 auto;height: 510px;box-shadow: 0px 4px 8px 10px #888888;">
+            <form action="/update-student" method="post" style="width:30%;padding: 20px; border: 1px #000 solid;border-radius: 3%;text-align: center; margin: 0 auto;height: 610px;box-shadow: 0px 4px 8px 10px #888888;">
                 <span style="font-size: 24px; font-weight: 600;">Thông tin cá nhân</span>
-
-
                 <div class="form-group" style="width: 100%;">
                     <label for="exampleInputEmail1" class="exampleInputEmail1">Mã sinh viên</label>
-                    <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="{{ user.id }} " readonly>
+                    <input type="number " name="student_id" class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " value="{{ user.id }}">
                 </div>
                 <div class="form-group " style="width: 100%; ">
                     <label for="exampleInputPassword1 " class="exampleInputEmail1">Họ và tên</label>
-                    <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="{{ user.name }} " readonly>
+                    <input type="text " name="name" class="form-control " id="exampleInputPassword1 " value="{{ user.name }}">
                 </div>
                 <div class="form-group " style="width: 100%; ">
                     <label for="exampleInputPassword1 " class="exampleInputEmail1">Tuổi</label>
-                    <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="{{ user.age }} " readonly>
+                    <input type="text " name="age" class="form-control " id="exampleInputPassword1 " value="{{ user.age }}">
                 </div>
                 <div class="form-group " style="width: 100%; ">
                     <label for="exampleInputPassword1 " class="exampleInputEmail1">Địa chỉ</label>
-                    <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="{{ user.address }} " readonly>
+                    <input type="text " name="address" class="form-control " id="exampleInputPassword1 " value="{{ user.address }}">
                 </div>
+                <div class="form-group " style="width: 100%; ">
+                    <label for="exampleInputPassword1 " class="exampleInputEmail1">Email</label>
+                    <input type="text " name="email" class="form-control " id="exampleInputPassword1 " value="{{ user.email }}">
+                </div>
+                <button type="submit">Update</button>
+                <p></p>
             </form>
+
         </div>
 
     </div>

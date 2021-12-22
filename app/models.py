@@ -42,6 +42,8 @@ class Student(UserMixin,db.Model):
     def delete_student(self):
         db.session.delete(self)
         db.session.commit()
+    def list_student():
+        return Student.query.all()
 
 @login.user_loader
 def loader_id(id):

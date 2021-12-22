@@ -35,6 +35,13 @@ def profile():
     user = Student.query.get(current_user.id)
     return render_template('profile.html', title='Home', user=user)
 
+@app.route('/list-student', methods=['GET'])
+@login_required
+def list_students():
+    list_students = Student.list_student()
+    return render_template('student_view.html',list_students=list_students)
+
+
 @app.route('/update-student', methods=['POST'])
 @login_required
 def update_student():
@@ -46,7 +53,7 @@ def update_student():
 
     student = Student.query.get(student_id)
     student.update_student(name, age, address, email)
-    return render_template('detail_class.html',detail_class=student_id)
+    return redirect('/profile')
 
 @app.route('/update-activate-student', methods=['POST'])
 @login_required
@@ -63,4 +70,4 @@ def delete_students():
     student_id = request.form.get("student_id")
     student = Student.query.filter_by(id = student_id).one()
     student.delete_student()
-    return render_template('detail_class.html',detail_class=student_id)
+    return redirect('/list-student')
