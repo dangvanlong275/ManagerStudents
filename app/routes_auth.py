@@ -39,7 +39,7 @@ def admin_login():
         user = Admin.query.filter_by(user_name=form.user_name.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect('/login')
+            return redirect('/admin/login')
         login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -64,6 +64,11 @@ def register():
 def logout():
     logout_user()
     return redirect('/login')
+
+@app.route('/admin/logout')
+def logout_admin():
+    logout_user()
+    return redirect('/admin/login')
 
 
 

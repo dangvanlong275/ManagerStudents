@@ -1,29 +1,7 @@
-{% extends "layouts/base.html" %} {% block content %}
+{% extends "layouts/adminbase.html" %} {% block content %}
 <div class="main-content">
     <div class="row">
         <div class="col-md-6 col-sm-8 clearfix">
-            <ul class="user-info pull-left pull-none-xsm">
-                <li class="profile-info dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <strong> Mã sinh viên:</strong>{{ user.id }}
-                    </a>
-                </li>
-                <li class="profile-info dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <strong>&emsp; Họ và tên: </strong>{{ user.name }}
-                    </a>
-                </li>
-                <li class="profile-info dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <strong>&emsp; Tuổi:</strong>{{ user.age }}
-                    </a>
-                </li>
-                <li class="profile-info dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <strong>&emsp; Địa chỉ:</strong>{{ user.address }}
-                    </a>
-                </li>
-            </ul>
         </div>
 
     </div>
